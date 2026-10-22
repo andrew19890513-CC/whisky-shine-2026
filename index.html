@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Whisky Shine 2026 - Seapower Trading Co., Ltd. 凱權貿易有限公司</title>
     <style>
         :root {
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
-            --brand-red: #C8102E; /* Seapower Brand Red */
+            --brand-red: #C8102E;
             --brand-red-light: #fff0f2;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --border-color: #e5e7eb;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -28,14 +33,14 @@
             min-height: 100vh;
         }
 
-        /* Header Layout Adjustment */
+        /* Header Optimization for Mobile */
         header {
             background-color: #ffffff;
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 2px solid var(--brand-red);
-            padding: 12px 24px;
+            padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,23 +50,22 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 16px;
-            height: 48px; /* 統一 Header 內部元件高度 */
+            gap: 12px;
+            height: 40px;
         }
 
         .company-logo {
-            height: 100%; /* 與文字高度完全一致 */
+            height: 100%;
             width: auto;
             object-fit: contain;
         }
 
         .company-sub {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
             font-weight: 600;
             display: flex;
             align-items: center;
-            height: 100%; /* 與 Logo 等高 */
             line-height: 1.2;
         }
 
@@ -69,34 +73,35 @@
             background: #ffffff;
             border: 1.5px solid var(--brand-red);
             color: var(--brand-red);
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
-        .lang-btn:hover {
+        .lang-btn:active {
             background-color: var(--brand-red);
             color: #ffffff;
         }
 
-        /* Container & Page Title Below Red Line */
+        /* Container & Titles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 24px 20px;
+            padding: 16px;
             flex: 1;
+            width: 100%;
         }
 
-        /* Title Moved Below Red Line */
         .page-title-section {
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .main-title {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--brand-red);
             letter-spacing: 0.5px;
@@ -107,19 +112,18 @@
         .controls {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-bottom: 28px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
 
         .search-bar {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px 16px;
             background: #ffffff;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             color: var(--text-primary);
             font-size: 0.95rem;
-            box-sizing: border-box;
             box-shadow: var(--shadow-sm);
             transition: border-color 0.2s ease;
         }
@@ -129,29 +133,30 @@
             border-color: var(--brand-red);
         }
 
+        /* Responsive Scrollable Tabs */
         .category-tabs {
             display: flex;
             gap: 8px;
             overflow-x: auto;
-            padding-bottom: 6px;
+            padding-bottom: 4px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
         }
 
         .tab-btn {
             background: #ffffff;
             border: 1px solid var(--border-color);
             color: var(--text-secondary);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
             white-space: nowrap;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn:hover {
-            border-color: var(--brand-red);
-            color: var(--brand-red);
+            flex-shrink: 0;
         }
 
         .tab-btn.active {
@@ -161,41 +166,41 @@
             font-weight: 700;
         }
 
-        /* Grid & Cards */
+        /* Grid Layout for Mobile & Desktop */
         .whisky-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        @media (min-width: 600px) {
+            .whisky-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 20px;
+            }
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 18px;
+            border-radius: 12px;
+            padding: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-            cursor: pointer;
             box-shadow: var(--shadow-sm);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--brand-red);
+            cursor: pointer;
         }
 
         .card-img-container {
             width: 100%;
-            height: 180px;
+            height: 140px;
             background-color: #fafafa;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             overflow: hidden;
             border: 1px solid #f0f0f0;
         }
@@ -206,31 +211,26 @@
             object-fit: contain;
         }
 
-        .card-header {
-            margin-bottom: 10px;
-        }
-
         .card-title {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin: 0 0 4px 0;
+            margin: 0 0 2px 0;
             color: var(--text-primary);
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
         .card-subtitle {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
             margin: 0;
         }
 
-        /* Pricing Tag Component */
         .price-badge-container {
             background: var(--brand-red-light);
             border: 1px solid rgba(200, 16, 46, 0.2);
             border-radius: 8px;
-            padding: 10px 12px;
-            margin: 12px 0;
+            padding: 8px 10px;
+            margin: 10px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -242,14 +242,14 @@
         }
 
         .price-label {
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             color: var(--text-secondary);
             text-transform: uppercase;
             font-weight: 600;
         }
 
         .price-value {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: var(--brand-red);
             font-weight: 800;
         }
@@ -257,19 +257,19 @@
         .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 4px;
         }
 
         .tag {
             background: #f3f4f6;
             color: #4b5563;
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
-        /* Modal Details */
+        /* Mobile Bottom Sheet Modal */
         .modal {
             display: none;
             position: fixed;
@@ -277,59 +277,73 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
             z-index: 1000;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
-            box-sizing: border-box;
+            align-items: flex-end;
+        }
+
+        @media (min-width: 600px) {
+            .modal {
+                align-items: center;
+                padding: 20px;
+            }
         }
 
         .modal-content {
             background: #ffffff;
-            border-top: 5px solid var(--brand-red);
-            border-radius: 16px;
+            border-top: 4px solid var(--brand-red);
+            border-radius: 16px 16px 0 0;
             max-width: 520px;
             width: 100%;
-            padding: 24px;
+            padding: 20px;
             position: relative;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            box-shadow: 0 -10px 25px rgba(0,0,0,0.15);
+            animation: slideUp 0.25s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @media (min-width: 600px) {
+            .modal-content {
+                border-radius: 16px;
+                animation: none;
+            }
         }
 
         .close-btn {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 12px;
+            right: 12px;
             background: #f3f4f6;
             border: none;
             color: var(--text-secondary);
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .close-btn:hover {
-            background: #e5e7eb;
-            color: var(--text-primary);
+            z-index: 10;
         }
 
         .modal-product-shot {
             width: 100%;
-            height: 220px;
+            height: 180px;
             background-color: #fafafa;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             border: 1px solid #f0f0f0;
         }
 
@@ -340,92 +354,81 @@
         }
 
         .tasting-note-item {
-            margin-bottom: 12px;
-            font-size: 0.92rem;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 0.88rem;
+            line-height: 1.5;
         }
 
         .tasting-note-item strong {
             color: var(--brand-red);
             display: inline-block;
-            min-width: 70px;
+            min-width: 60px;
         }
 
-        /* Footer */
+        /* Footer Responsive */
         footer {
             background-color: #ffffff;
             border-top: 1px solid var(--border-color);
-            padding: 24px 20px;
+            padding: 20px 16px;
             text-align: center;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             color: #4b5563;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        .footer-warning {
-            max-width: 900px;
-            margin: 0 auto;
-            font-weight: 600;
-        }
-
-        .footer-disclaimer {
-            margin-top: 12px;
-            color: #9ca3af;
-            font-size: 0.75rem;
+        /* Hide full company text on very small screens to avoid header break */
+        @media (max-width: 480px) {
+            .company-sub {
+                display: none;
+            }
+            .main-title {
+                font-size: 1.35rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Above Red Line -->
     <header>
         <div class="header-left">
-            <!-- PNG Logo from logo/ folder -->
             <img src="logo/logo.png" alt="Seapower Logo" class="company-logo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 160 48\'><rect width=\'160\' height=\'48\' rx=\'6\' fill=\'%23C8102E\'/><text x=\'80\' y=\'30\' fill=\'%23ffffff\' font-family=\'Arial\' font-size=\'16\' font-weight=\'bold\' text-anchor=\'middle\'>SEAPOWER</text></svg>';">
-            <!-- Company Name aligned with logo height -->
             <span class="company-sub">Seapower Trading Co., Ltd. 凱權貿易有限公司</span>
         </div>
         <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">繁體中文</button>
     </header>
 
     <div class="container">
-        <!-- Whisky Shine 2026 Moved Below Red Line -->
         <div class="page-title-section">
             <h1 class="main-title">Whisky Shine 2026</h1>
         </div>
 
         <div class="controls">
             <input type="text" id="searchInput" class="search-bar" placeholder="Search whisky name, code, flavor tags..." oninput="filterData()">
-            <div class="category-tabs" id="categoryTabs">
-                <!-- JS Dynamic Tabs -->
-            </div>
+            <div class="category-tabs" id="categoryTabs"></div>
         </div>
 
-        <div class="whisky-grid" id="whiskyGrid">
-            <!-- JS Dynamic Cards -->
-        </div>
+        <div class="whisky-grid" id="whiskyGrid"></div>
     </div>
 
-    <!-- Details Modal -->
-    <div class="modal" id="detailModal">
+    <!-- Modal Details -->
+    <div class="modal" id="detailModal" onclick="closeModalOnOverlay(event)">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             
             <div class="modal-product-shot" id="modalImgContainer">
-                <img id="modalImg" src="" alt="Product Shot">
+                <img id="modalImg" src="" alt="Product Shot" loading="lazy">
             </div>
 
-            <h2 id="modalTitle" style="color: var(--brand-red); margin: 0 0 4px 0; font-size: 1.25rem;"></h2>
-            <p id="modalSubtitle" style="color: var(--text-secondary); margin: 0 0 12px 0; font-size: 0.88rem;"></p>
+            <h2 id="modalTitle" style="color: var(--brand-red); margin: 0 0 4px 0; font-size: 1.15rem;"></h2>
+            <p id="modalSubtitle" style="color: var(--text-secondary); margin: 0 0 10px 0; font-size: 0.82rem;"></p>
             
             <div id="modalPrices" class="price-badge-container"></div>
 
-            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 16px 0;">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 12px 0;">
             <div id="modalNotes"></div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-warning">
             過量飲酒危害健康<br>
@@ -443,12 +446,11 @@
     <script>
         const defaultBottleSVG = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' width='100' height='200'><path d='M40 10 h20 v20 h10 l10 30 v120 h-60 v-120 l10 -30 v-20 z' fill='%23e5e7eb' stroke='%239ca3af' stroke-width='2'/><rect x='35' y='80' width='30' height='50' fill='%23C8102E' rx='3'/><text x='50' y='110' fill='%23ffffff' font-size='8' font-weight='bold' text-anchor='middle'>WHISKY</text></svg>";
 
-        // Full 28 Whisky Database with Updated Local Folder Image Paths
         const whiskies = [
             {
                 code: "SMTHEABER12QT",
                 region: "Scotch",
-                img: "images/Aberlour 12yrs - bottle with  box.jpg",
+                img: "images/Aberlour 12yrs - bottle with box.jpg",
                 name_en: "The Aberlour 12 Year Old Single Malt Scotch Whisky",
                 name_zh: "亞伯樂12年單一麥芽蘇格蘭威士忌",
                 glass: "MOP25",
@@ -563,7 +565,7 @@
                 tags_en: ["Mango", "Peach", "Butter Toffee", "Chocolate"],
                 tags_zh: ["芒果", "水蜜桃", "奶油太妃糖", "巧克力"],
                 notes_en: { nose: "Mango, peach, butter toffee, bitter orange peel.", palate: "Smooth toffee, chocolate, vanilla, mature tropical fruits.", finish: "Smooth, long with subtle oak spice." },
-                notes_zh: { nose: "芒果、水蜜桃、奶油太妃糖與苦橙皮。", palate: "滑順的太妃糖、巧克力、香草與成熟熱帶水果。", finish: "滑順、悠長且帶有些許橡木辛香。" }
+                notes_zh: { nose: "芒果、水蜜桃、奶油太妃糖與苦橙皮。", palate: "滑順的太妃糖、巧克力、香草與成熟熱帶水果。", finish: "滑順、悠長且帶領域些許橡木辛香。" }
             },
             {
                 code: "SWLM23QT",
@@ -598,7 +600,7 @@
             {
                 code: "SMGLENGR21QT",
                 region: "Scotch",
-                img: "images/Glen Grant 21 Year Old Single Malt Whisky Qt. with box.png",
+                img: "images/Glen Grant 21 Year Old Single Malt Whisky Qt. with box.jpg",
                 name_en: "Glen Grant 21 Year Old Single Malt Whisky Qt.",
                 name_zh: "格蘭冠21年單一麥芽威士忌(大號)",
                 glass: "MOP100",
@@ -688,7 +690,7 @@
             {
                 code: "SMYOI10QT",
                 region: "Japanese",
-                img: "images/Yoichi Single Malt 10 Years Old Whisky.jpeg",
+                img: "images/Yoichi Single Malt 10 Years Old Whisky.jpg",
                 name_en: "Yoichi 10 Year Old Single Malt Whisky",
                 name_zh: "余市10年單一麥芽威士忌",
                 glass: "MOP50",
@@ -867,38 +869,31 @@
             }
         ];
 
-        // Regions Translation
         const regions = {
             en: { All: "All Regions", Scotch: "Scotch", Japanese: "Japanese", Taiwanese: "Taiwanese", Australian: "Australian", French: "French" },
             zh: { All: "全部產區", Scotch: "蘇格蘭", Japanese: "日本", Taiwanese: "台灣", Australian: "澳洲", French: "法國" }
         };
 
-        let currentLang = "en"; // Default Language set to English
+        let currentLang = "en";
         let currentRegion = "All";
 
-        // Initialize Page
         window.onload = () => {
             renderTabs();
             renderGrid();
         };
 
-        // Language Toggle
         function toggleLanguage() {
             currentLang = currentLang === "en" ? "zh" : "en";
-            
             document.documentElement.lang = currentLang === "en" ? "en" : "zh-Hant";
             document.getElementById("langToggle").innerText = currentLang === "en" ? "繁體中文" : "English";
             document.getElementById("searchInput").placeholder = currentLang === "en" ? "Search whisky name, code, flavor tags..." : "搜尋威士忌名稱、編號、風味標籤...";
-
             renderTabs();
             renderGrid();
         }
 
-        // Render Category Tabs
         function renderTabs() {
             const tabsContainer = document.getElementById("categoryTabs");
             tabsContainer.innerHTML = "";
-            
             Object.keys(regions[currentLang]).forEach(key => {
                 const btn = document.createElement("button");
                 btn.className = `tab-btn ${currentRegion === key ? 'active' : ''}`;
@@ -912,7 +907,6 @@
             });
         }
 
-        // Render Whisky Grid
         function renderGrid() {
             const grid = document.getElementById("whiskyGrid");
             const searchKeyword = document.getElementById("searchInput").value.toLowerCase();
@@ -936,15 +930,13 @@
 
                 card.innerHTML = `
                     <div class="card-img-container">
-                        <img src="${item.img}" class="card-img" alt="${item.name_en}" loading="lazy" onerror="this.onerror=null; this.src='${defaultBottleSVG}';">
+                        <img src="${item.img}" class="card-img" alt="${item.name_en}" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='${defaultBottleSVG}';">
                     </div>
                     <div>
                         <div class="card-header">
                             <h3 class="card-title">${currentLang === "en" ? item.name_en : item.name_zh}</h3>
                             <p class="card-subtitle">${currentLang === "en" ? item.name_zh : item.name_en}</p>
                         </div>
-                        
-                        <!-- Price Badge Displayed Right Away on Card -->
                         <div class="price-badge-container">
                             <div class="price-item">
                                 <span class="price-label">${currentLang === "en" ? "Glass (15ml)" : "單杯 (15ml)"}</span>
@@ -966,7 +958,6 @@
             renderGrid();
         }
 
-        // Open Modal Details
         function openModal(item) {
             const modalImg = document.getElementById("modalImg");
             modalImg.src = item.img;
@@ -998,10 +989,18 @@
 
             document.getElementById("modalNotes").innerHTML = notesHTML;
             document.getElementById("detailModal").style.display = "flex";
+            document.body.style.overflow = "hidden";
         }
 
         function closeModal() {
             document.getElementById("detailModal").style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        function closeModalOnOverlay(e) {
+            if (e.target.id === "detailModal") {
+                closeModal();
+            }
         }
     </script>
 </body>
